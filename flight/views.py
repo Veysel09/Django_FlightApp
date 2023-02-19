@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAdminUser
 from .permissions import IsStafforReadOnly
 from datetime import datetime, date
 
-
+# Create your views here.
 class FlightView(viewsets.ModelViewSet):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
@@ -34,8 +34,9 @@ class FlightView(viewsets.ModelViewSet):
 
                 queryset = queryset.union(today_qs)
             return queryset
-        
-        class ReservationView(viewsets.ModelViewSet):
+    
+    
+class ReservationView(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     
@@ -47,6 +48,3 @@ class FlightView(viewsets.ModelViewSet):
         return queryset.filter(user= self.request.user)
     
 
-
-    
-    

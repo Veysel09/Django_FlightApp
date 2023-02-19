@@ -15,14 +15,16 @@ class FlightSerializer(serializers.ModelSerializer):
             "date_of_departure",
             "etd"
         )
-
-    class PassengerSerializer(serializers.ModelSerializer):
+        
+        
+class PassengerSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Passenger
         fields = "__all__"
   
-    class ReservationSerializer(serializers.ModelSerializer):
+
+class ReservationSerializer(serializers.ModelSerializer):
 
     passenger = PassengerSerializer(many=True, required=True)
     flight = serializers.StringRelatedField()
@@ -45,9 +47,9 @@ class FlightSerializer(serializers.ModelSerializer):
         
         reservation.save()
         return reservation
-    
-
             
+        
+        
 class StaffFlightSerializer(serializers.ModelSerializer):
     
     reservation = ReservationSerializer(many=True, read_only=True)
@@ -68,4 +70,3 @@ class StaffFlightSerializer(serializers.ModelSerializer):
         
     
     
-            
