@@ -15,3 +15,11 @@ class FlightSerializer(serializers.ModelSerializer):
             "date_of_departure",
             "etd"
         )
+
+    class PassengerSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Passenger
+        fields = "__all__"
+  
+    
